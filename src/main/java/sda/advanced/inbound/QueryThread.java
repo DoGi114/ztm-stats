@@ -21,7 +21,7 @@ public class QueryThread extends Thread {
     public void run() {
         super.run();
         while(true) {
-            dataStorage.update(ZtmDataProvider.getData());
+            dataStorage.update(ZtmDataProvider.getData().orElseThrow());
             try {
                 Thread.sleep(30000);
             } catch (InterruptedException e) {

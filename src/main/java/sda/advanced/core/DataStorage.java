@@ -27,10 +27,14 @@ public class DataStorage {
 //    }
 
     public void update(ZtmData ztmData){
-        System.out.println("Last update was: " + lastUpdateDate );
-        System.out.println("Updating...");
-        lastUpdateDate = LocalDateTime.parse(ztmData.getLastUpdateDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        vehicleList = ztmData.getVehicleList();
-        System.out.println("Finished updating at: " + LocalDateTime.now());
+        if (ztmData != null) {
+            System.out.println("Last update was: " + lastUpdateDate);
+            System.out.println("Updating...");
+            lastUpdateDate = LocalDateTime.parse(ztmData.getLastUpdateDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            vehicleList = ztmData.getVehicleList();
+            System.out.println("Finished updating at: " + LocalDateTime.now());
+        } else {
+            System.err.println("No data!");
+        }
     }
 }
